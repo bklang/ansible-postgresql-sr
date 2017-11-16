@@ -1,4 +1,4 @@
-# file: tasks/configure-slaves.yml -- postgresql pre-start configuration of the slave servers and startup
+# file: tasks/configure-replicas.yml -- postgresql pre-start configuration of the replica servers and startup
 
 - name: "Stage 3: stop old postgresql service"
   service: name="{{ postgresql_service_name }}" state=stopped
@@ -14,7 +14,7 @@
     group: "{{ postgresql_admin_user }}"
     mode: 0700
   when: postgresql_cluster_symlink_src|length > 0
-  
+
 - name: "Stage 3: cluster directory replacement with symlink, create symlink"
   file:
     src: "{{ postgresql_cluster_symlink_src }}"

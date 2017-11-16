@@ -20,8 +20,8 @@ Known issues:
 How-to use:
 - download repo with git clone;
 - cd into role directory;
-- specify master and slaves ip addresses in inventory file;
-- specify master and slaves ip addresses and other configuration in defaults/main.yml file;
+- specify master and replicas ip addresses in inventory file;
+- specify master and replicas ip addresses and other configuration in defaults/main.yml file;
 - change hosts: variable in role.yml;
 - start ansible-playbook with role.yml and your inventory file.
 ```

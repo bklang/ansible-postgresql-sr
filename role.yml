@@ -20,11 +20,11 @@
   - include: 'tasks/users.yml'
   - include: 'tasks/databases.yml'
 
-- hosts: streaming-slaves
+- hosts: streaming-replicas
   sudo: yes
   sudo_user: root
   vars_files:
     - 'defaults/main.yml'
   tasks:
   - group_by: key=os_{{ ansible_os_family }}
-  - include: 'tasks/configure-slaves.yml'
+  - include: 'tasks/configure-replicas.yml'
