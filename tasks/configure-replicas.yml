@@ -36,7 +36,9 @@
     mode: 0600
 
 - name: "Stage 3: initialize new postgresql cluster"
-  command: "sudo -u postgres pg_basebackup -c fast -X stream -h {{ postgresql_streaming_master }} -U {{ postgresql_streaming_user.name }} -D {{ postgresql_data_dir }}"
+  become: yes
+  become_user: postgres
+  command: "pg_basebackup -c fast -X stream -h {{ groups['streaming-master'][0] }} -U {{ postgresql_streaming_user.name }} -D {{ postgresql_data_dir }}"
 
 - name: "Stage 3: configure pg_hba.conf"
   template:
